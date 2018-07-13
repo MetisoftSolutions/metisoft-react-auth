@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import * as auth from './service';
 
 import { User } from '@firebase/auth-types';
@@ -13,7 +13,8 @@ interface IAuthError {
 }
 
 export interface IRegistrationFormProps {
-  usingCustomStyles?: boolean;
+  styles: any;
+  goToLogin: () => void;
 }
 
 export interface IRegistrationFormState {
@@ -32,6 +33,8 @@ export class RegistrationForm extends React.Component<IRegistrationFormProps, IR
 
   constructor(props: any) {
     super(props);
+
+    this.__handleClickLogIn = this.__handleClickLogIn.bind(this);
 
     this.state = {
       status: 'showForm',
@@ -85,18 +88,19 @@ export class RegistrationForm extends React.Component<IRegistrationFormProps, IR
 
   private __showForm() {
     let errorDisplay: JSX.Element | null = null;
+    const styles = this.props.styles;
 
     if (this.state.error.message !== '') {
       errorDisplay = (<p>{this.state.error.message}</p>);
     }
 
     return (
-      <div className="auth-form">
+      <div className={styles['auth-form']}>
         <h1>Register a new account</h1>
         <form onSubmit={this.__handleSubmit} method="POST">
           {errorDisplay}
 
-          <div className="input-field">
+          <div className={styles['input-field']}>
             <input 
               type="email"
               name="email"
@@ -105,7 +109,7 @@ export class RegistrationForm extends React.Component<IRegistrationFormProps, IR
               onChange={this.__handleInputChange} />
           </div>
 
-          <div className="input-field">
+          <div className={styles['input-field']}>
             <input
               type="password"
               name="password1"
@@ -114,7 +118,7 @@ export class RegistrationForm extends React.Component<IRegistrationFormProps, IR
               onChange={this.__handleInputChange} />
           </div>
 
-          <div className="input-field">
+          <div className={styles['input-field']}>
             <input
               type="password"
               name="password2"
@@ -123,14 +127,14 @@ export class RegistrationForm extends React.Component<IRegistrationFormProps, IR
               onChange={this.__handleInputChange} />
           </div>
 
-          <div className="input-field">
+          <div className={styles['input-field']}>
             <input type="submit" value="Register" />
           </div>
 
-          <div className="input-field">
+          <div className={styles['input-field']}>
             <p>
               Already have an account?&nbsp;
-              <Link to="/auth/login">Login here</Link>.
+              <a href="#" onClick={this.__handleClickLogIn}>Log in here</a>.
             </p>
           </div>
         </form>
@@ -172,6 +176,13 @@ export class RegistrationForm extends React.Component<IRegistrationFormProps, IR
         status: 'complete'
       });
     }
+  }
+
+
+
+  private __handleClickLogIn(event: React.MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+    this.props.goToLogin();
   }
 
 

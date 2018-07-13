@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 import * as auth from './service';
@@ -5,15 +6,17 @@ import * as auth from './service';
 import { LoginForm } from './LoginForm';
 import { RegistrationForm } from './RegistrationForm';
 
+const defaultStyles = require('./styles/auth.css');
 
 
-interface IUnstyledAuthWidgetProps {
+
+export interface IAuthWidgetProps {
   status?: string;
-  styleSheetFileName?: string;
   successRoute: string;
+  styles?: any;
 }
 
-interface IUnstyledAuthWidgetState {
+export interface IAuthWidgetState {
   status: string;
   loginError: {
     code: string;
@@ -21,12 +24,21 @@ interface IUnstyledAuthWidgetState {
   };
 }
 
-export class UnstyledAuthWidget extends React.Component<IUnstyledAuthWidgetProps, IUnstyledAuthWidgetState> {
+export class AuthWidget extends React.Component<IAuthWidgetProps, IAuthWidgetState> {
 
   private __removeLoginChangeListener: (() => void) | null;
+  private __styles: any = defaultStyles;
 
-  constructor(props: IUnstyledAuthWidgetProps) {
+  constructor(props: IAuthWidgetProps) {
     super(props);
+
+    this.goToLogin = this.goToLogin.bind(this);
+    this.goToRegister = this.goToRegister.bind(this);
+
+    if (this.props.styles) {
+      this.__styles = _.cloneDeep(this.props.styles);
+    }
+
     this.state = {
       status: props.status || 'loginForm',
       loginError: {
@@ -70,12 +82,32 @@ export class UnstyledAuthWidget extends React.Component<IUnstyledAuthWidgetProps
 
 
 
+  public goToLogin() {
+    this.setState({ status: 'loginForm' });
+  }
+
+
+
+  public goToRegister() {
+    this.setState({ status: 'registrationForm' });
+  }
+
+
+
   public render() {
     if (this.state.status === 'loginForm') {
-      return <LoginForm />;
+      return (
+        <LoginForm
+          styles={this.__styles}
+          goToRegister={this.goToRegister} />
+      );
 
     } else if (this.state.status === 'registrationForm') {
-      return <RegistrationForm />;
+      return (
+        <RegistrationForm
+          styles={this.__styles}
+          goToLogin={this.goToLogin} />
+      );
 
     } else if (this.state.status === 'loginComplete') {
       return <Redirect to={this.props.successRoute} />;
