@@ -1,0 +1,13 @@
+import * as Promise from 'bluebird';
+import * as firebase from 'firebase';
+export declare function init(firebaseApp?: firebase.app.App): void;
+export declare function logIn(email: string, password: string): Promise<firebase.auth.UserCredential>;
+export declare function register(email: string, password: string): Promise<firebase.auth.UserCredential>;
+export declare function logOut(): Promise<void>;
+declare type FnListener = (user: firebase.User | null) => void;
+declare type FnUnregisterListener = () => void;
+export declare function addLoginChangeListener(listener: FnListener): FnUnregisterListener;
+export declare function shutDown(): void;
+export declare function isLoggedIn(): boolean;
+export declare function getLoggedInUser(): firebase.User | null;
+export {};
