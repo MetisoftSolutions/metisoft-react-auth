@@ -54,10 +54,10 @@ class AuthWidget extends React.Component {
     }
     render() {
         if (this.state.status === 'loginForm') {
-            return (React.createElement(LoginForm_1.LoginForm, { styles: this.__styles, goToRegister: this.goToRegister }));
+            return (React.createElement(LoginForm_1.LoginForm, { styles: this.__styles, goToRegister: this.goToRegister, successRoute: this.props.successRoute }));
         }
         else if (this.state.status === 'registrationForm') {
-            return (React.createElement(RegistrationForm_1.RegistrationForm, { styles: this.__styles, goToLogin: this.goToLogin }));
+            return (React.createElement(RegistrationForm_1.RegistrationForm, { styles: this.__styles, goToLogin: this.goToLogin, successRoute: this.props.successRoute }));
         }
         else if (this.state.status === 'loginComplete') {
             return React.createElement(react_router_dom_1.Redirect, { to: this.props.successRoute });

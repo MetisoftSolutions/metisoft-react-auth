@@ -99,14 +99,16 @@ export class AuthWidget extends React.Component<IAuthWidgetProps, IAuthWidgetSta
       return (
         <LoginForm
           styles={this.__styles}
-          goToRegister={this.goToRegister} />
+          goToRegister={this.goToRegister}
+          successRoute={this.props.successRoute} />
       );
 
     } else if (this.state.status === 'registrationForm') {
       return (
         <RegistrationForm
           styles={this.__styles}
-          goToLogin={this.goToLogin} />
+          goToLogin={this.goToLogin}
+          successRoute={this.props.successRoute} />
       );
 
     } else if (this.state.status === 'loginComplete') {

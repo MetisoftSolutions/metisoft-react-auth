@@ -3,6 +3,7 @@ export declare type FnOnLogin = (email: string, password: string) => void;
 export interface ILoginFormProps {
     styles: any;
     goToRegister: () => void;
+    successRoute: string;
 }
 interface ILoginFormState {
     status: string;

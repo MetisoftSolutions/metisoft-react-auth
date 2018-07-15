@@ -11,6 +11,7 @@ export type FnOnLogin = (email: string, password: string) => void;
 export interface ILoginFormProps {
   styles: any;
   goToRegister: () => void;
+  successRoute: string;
 }
 
 interface ILoginFormState {
@@ -143,7 +144,7 @@ export class LoginForm extends React.Component<ILoginFormProps, ILoginFormState>
 
   private __loggedIn() {
     return (
-      <Redirect to="/auth/success" />
+      <Redirect to={this.props.successRoute} />
     );
   }
 

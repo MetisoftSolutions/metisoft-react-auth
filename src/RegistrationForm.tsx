@@ -15,6 +15,7 @@ interface IAuthError {
 export interface IRegistrationFormProps {
   styles: any;
   goToLogin: () => void;
+  successRoute: string;
 }
 
 export interface IRegistrationFormState {
@@ -199,7 +200,7 @@ export class RegistrationForm extends React.Component<IRegistrationFormProps, IR
 
   private __complete() {
     return (
-      <Redirect to="/auth/success" />
+      <Redirect to={this.props.successRoute} />
     );
   }
 

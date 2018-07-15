@@ -102,7 +102,7 @@ class RegistrationForm extends React.Component {
         return (React.createElement("div", { className: "auth-form" }, "Submitting data..."));
     }
     __complete() {
-        return (React.createElement(react_router_dom_1.Redirect, { to: "/auth/success" }));
+        return (React.createElement(react_router_dom_1.Redirect, { to: this.props.successRoute }));
     }
 }
 exports.RegistrationForm = RegistrationForm;

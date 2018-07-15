@@ -6,6 +6,7 @@ interface IAuthError {
 export interface IRegistrationFormProps {
     styles: any;
     goToLogin: () => void;
+    successRoute: string;
 }
 export interface IRegistrationFormState {
     status: string;
