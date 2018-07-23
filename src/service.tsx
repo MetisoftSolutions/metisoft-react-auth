@@ -46,7 +46,7 @@ export function logOut() {
 
 
 
-type FnListener = (user: firebase.User | null) => void;
+export type FnListener = (user: firebase.User | null) => void;
 const listeners: FnListener[] = [];
 
 function __onLoginChange(user: firebase.User | null) {
@@ -59,7 +59,7 @@ function __onLoginChange(user: firebase.User | null) {
 
 
 
-type FnUnregisterListener = () => void;
+export type FnUnregisterListener = () => void;
 
 export function addLoginChangeListener(listener: FnListener): FnUnregisterListener {
   listeners.push(listener);
