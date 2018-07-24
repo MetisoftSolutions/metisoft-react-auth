@@ -1,4 +1,3 @@
-import * as Promise from 'bluebird';
 import * as firebase from 'firebase';
 import * as _ from 'lodash';
 

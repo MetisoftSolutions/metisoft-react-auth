@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Promise = require("bluebird");
 const firebase = require("firebase");
 const _ = require("lodash");
 let __unregisterAuthObserver = () => { };

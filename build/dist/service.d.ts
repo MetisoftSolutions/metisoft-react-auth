@@ -1,4 +1,3 @@
-import * as Promise from 'bluebird';
 import * as firebase from 'firebase';
 export declare function init(firebaseApp?: firebase.app.App): void;
 export declare function logIn(email: string, password: string): Promise<firebase.auth.UserCredential>;
