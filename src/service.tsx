@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 
 
 let __unregisterAuthObserver = () => {};
-let __loggedInUser: firebase.User | null;
+let __loggedInUser: firebase.User | null = null;
 let __firebaseApp: firebase.app.App;
 
 export function init(firebaseApp?: firebase.app.App) {
@@ -87,5 +87,5 @@ export function isLoggedIn() {
 
 
 export function getLoggedInUser() {
-  return _.cloneDeep(__loggedInUser);
+  return __loggedInUser;
 }

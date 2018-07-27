@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const firebase = require("firebase");
 const _ = require("lodash");
 let __unregisterAuthObserver = () => { };
-let __loggedInUser;
+let __loggedInUser = null;
 let __firebaseApp;
 function init(firebaseApp) {
     if (!firebaseApp) {
@@ -60,7 +60,7 @@ function isLoggedIn() {
 }
 exports.isLoggedIn = isLoggedIn;
 function getLoggedInUser() {
-    return _.cloneDeep(__loggedInUser);
+    return __loggedInUser;
 }
 exports.getLoggedInUser = getLoggedInUser;
 //# sourceMappingURL=service.js.map
