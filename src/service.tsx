@@ -3,8 +3,13 @@ import * as _ from 'lodash';
 
 
 
+// A firebase.User object means the user is logged in.
+// null means a login attempt was made, but the user is still not logged in.
+// 'NO_LOGIN_ATTEMPT_YET' means no login attempt has yet been made.
+export type ILoggedInUser = firebase.User | null | 'NO_LOGIN_ATTEMPT_YET';
+
 let __unregisterAuthObserver = () => {};
-let __loggedInUser: firebase.User | null = null;
+let __loggedInUser: ILoggedInUser = 'NO_LOGIN_ATTEMPT_YET';
 let __firebaseApp: firebase.app.App;
 
 export function init(firebaseApp?: firebase.app.App) {
@@ -45,7 +50,7 @@ export function logOut() {
 
 
 
-export type FnListener = (user: firebase.User | null) => void;
+export type FnListener = (user: ILoggedInUser) => void;
 const listeners: FnListener[] = [];
 
 function __onLoginChange(user: firebase.User | null) {

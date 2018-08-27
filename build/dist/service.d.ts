@@ -1,11 +1,12 @@
 import * as firebase from 'firebase';
+export declare type ILoggedInUser = firebase.User | null | 'NO_LOGIN_ATTEMPT_YET';
 export declare function init(firebaseApp?: firebase.app.App): void;
 export declare function logIn(email: string, password: string): Promise<firebase.auth.UserCredential>;
 export declare function register(email: string, password: string): Promise<firebase.auth.UserCredential>;
 export declare function logOut(): Promise<void>;
-export declare type FnListener = (user: firebase.User | null) => void;
+export declare type FnListener = (user: ILoggedInUser) => void;
 export declare type FnUnregisterListener = () => void;
 export declare function addLoginChangeListener(listener: FnListener): FnUnregisterListener;
 export declare function shutDown(): void;
 export declare function isLoggedIn(): boolean;
-export declare function getLoggedInUser(): firebase.User | null;
+export declare function getLoggedInUser(): ILoggedInUser;

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const firebase = require("firebase");
 const _ = require("lodash");
 let __unregisterAuthObserver = () => { };
-let __loggedInUser = null;
+let __loggedInUser = 'NO_LOGIN_ATTEMPT_YET';
 let __firebaseApp;
 function init(firebaseApp) {
     if (!firebaseApp) {
