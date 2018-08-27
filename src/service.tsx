@@ -20,7 +20,6 @@ export function init(firebaseApp?: firebase.app.App) {
     }
   }
   __firebaseApp = firebaseApp;
-  __loggedInUser = null;
   
   __unregisterAuthObserver = __firebaseApp.auth().onAuthStateChanged(
     (user: firebase.User | null) => {

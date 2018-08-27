@@ -13,7 +13,6 @@ function init(firebaseApp) {
         }
     }
     __firebaseApp = firebaseApp;
-    __loggedInUser = null;
     __unregisterAuthObserver = __firebaseApp.auth().onAuthStateChanged((user) => {
         __loggedInUser = user;
         __onLoginChange(user);
