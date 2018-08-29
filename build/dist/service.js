@@ -31,6 +31,10 @@ function logOut() {
     return Promise.resolve(__firebaseApp.auth().signOut());
 }
 exports.logOut = logOut;
+function sendEmailVerification(user) {
+    return Promise.resolve(user.sendEmailVerification());
+}
+exports.sendEmailVerification = sendEmailVerification;
 const listeners = [];
 function __onLoginChange(user) {
     _.forEach(listeners, (listener) => {

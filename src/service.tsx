@@ -1,6 +1,8 @@
 import * as firebase from 'firebase';
 import * as _ from 'lodash';
 
+import { User } from '@firebase/auth-types';
+
 
 
 // A firebase.User object means the user is logged in.
@@ -45,6 +47,12 @@ export function register(email: string, password: string) {
 
 export function logOut() {
   return Promise.resolve(__firebaseApp.auth().signOut());
+}
+
+
+
+export function sendEmailVerification(user: User) {
+  return Promise.resolve(user.sendEmailVerification());
 }
 
 
