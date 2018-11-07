@@ -6,6 +6,7 @@ export declare function logIn(email: string, password: string): Promise<firebase
 export declare function register(email: string, password: string): Promise<firebase.auth.UserCredential>;
 export declare function logOut(): Promise<void>;
 export declare function sendEmailVerification(user: User): Promise<void>;
+export declare function sendPasswordResetEmail(email: string): Promise<void>;
 export declare type FnListener = (user: ILoggedInUser) => void;
 export declare type FnUnregisterListener = () => void;
 export declare function addLoginChangeListener(listener: FnListener): FnUnregisterListener;

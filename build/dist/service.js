@@ -35,6 +35,10 @@ function sendEmailVerification(user) {
     return Promise.resolve(user.sendEmailVerification());
 }
 exports.sendEmailVerification = sendEmailVerification;
+function sendPasswordResetEmail(email) {
+    return Promise.resolve(__firebaseApp.auth().sendPasswordResetEmail(email));
+}
+exports.sendPasswordResetEmail = sendPasswordResetEmail;
 const listeners = [];
 function __onLoginChange(user) {
     _.forEach(listeners, (listener) => {

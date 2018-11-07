@@ -57,6 +57,12 @@ export function sendEmailVerification(user: User) {
 
 
 
+export function sendPasswordResetEmail(email: string) {
+  return Promise.resolve(__firebaseApp.auth().sendPasswordResetEmail(email));
+}
+
+
+
 export type FnListener = (user: ILoggedInUser) => void;
 const listeners: FnListener[] = [];
 
