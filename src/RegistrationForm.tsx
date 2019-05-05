@@ -54,7 +54,7 @@ export class RegistrationForm extends React.Component<IRegistrationFormProps, IR
 
 
   public componentDidMount() {
-    this.__removeLoginChangeListener = auth.addLoginChangeListener(this.__handleLoginChange.bind(this));
+    this.__removeLoginChangeListener = auth.addLoginChangeListener(this.__handleLoginChange);
   }
 
 
@@ -171,13 +171,13 @@ export class RegistrationForm extends React.Component<IRegistrationFormProps, IR
 
 
 
-  private __handleLoginChange(user: User | null) {
+  private __handleLoginChange = (user: User | null | 'NO_LOGIN_ATTEMPT_YET') => {
     if (user !== null) {
       this.setState({
         status: 'complete'
       });
     }
-  }
+  };
 
 
 

@@ -6,7 +6,7 @@ import * as auth from './service';
 import { LoginForm } from './LoginForm';
 import { RegistrationForm } from './RegistrationForm';
 
-const defaultStyles = require('./styles/auth.css');
+const defaultStyles = require('./styles/auth.module.css');
 
 
 
