@@ -1,6 +1,6 @@
 {
   "name": "metisoft-react-auth",
-  "version": "3.0.0",
+  "version": "2.3.1-update-major",
   "private": true,
   "main": "build/dist/index.js",
   "types": "build/dist/index.d.ts",
