@@ -6,7 +6,7 @@ const react_router_dom_1 = require("react-router-dom");
 const auth = require("./service");
 const LoginForm_1 = require("./LoginForm");
 const RegistrationForm_1 = require("./RegistrationForm");
-const defaultStyles = require('./styles/auth.module.css');
+const defaultStyles = require('./styles/auth.css');
 class AuthWidget extends React.Component {
     constructor(props) {
         super(props);

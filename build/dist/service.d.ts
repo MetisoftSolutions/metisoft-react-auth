@@ -1,5 +1,5 @@
-import { User } from 'firebase';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
+import { User } from '@firebase/auth-types';
 export declare type ILoggedInUser = firebase.User | null | 'NO_LOGIN_ATTEMPT_YET';
 export declare function init(firebaseApp?: firebase.app.App): void;
 export declare function logIn(email: string, password: string): Promise<firebase.auth.UserCredential>;

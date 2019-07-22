@@ -26,13 +26,6 @@ class RegistrationForm extends React.Component {
             form[event.target.name] = event.target.value;
             this.setState({ form });
         };
-        this.__handleLoginChange = (user) => {
-            if (user !== null) {
-                this.setState({
-                    status: 'complete'
-                });
-            }
-        };
         this.__handleClickLogIn = this.__handleClickLogIn.bind(this);
         this.state = {
             status: 'showForm',
@@ -48,7 +41,7 @@ class RegistrationForm extends React.Component {
         };
     }
     componentDidMount() {
-        this.__removeLoginChangeListener = auth.addLoginChangeListener(this.__handleLoginChange);
+        this.__removeLoginChangeListener = auth.addLoginChangeListener(this.__handleLoginChange.bind(this));
     }
     componentWillUnmount() {
         if (this.__removeLoginChangeListener !== null) {
@@ -93,6 +86,13 @@ class RegistrationForm extends React.Component {
                         "Already have an account?\u00A0",
                         React.createElement("a", { href: "#", onClick: this.__handleClickLogIn }, "Log in here"),
                         ".")))));
+    }
+    __handleLoginChange(user) {
+        if (user !== null) {
+            this.setState({
+                status: 'complete'
+            });
+        }
     }
     __handleClickLogIn(event) {
         event.preventDefault();
