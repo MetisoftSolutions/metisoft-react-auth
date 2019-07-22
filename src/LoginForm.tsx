@@ -1,4 +1,4 @@
-import { User } from '@firebase/auth-types';
+import { User } from 'firebase';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
