@@ -1,7 +1,7 @@
-import * as firebase from 'firebase';
 import * as _ from 'lodash';
 
-import { User } from '@firebase/auth-types';
+import { User } from 'firebase';
+import * as firebase from 'firebase/app';
 
 
 

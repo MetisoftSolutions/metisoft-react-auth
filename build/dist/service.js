@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const firebase = require("firebase");
 const _ = require("lodash");
+const firebase = require("firebase/app");
 let __unregisterAuthObserver = () => { };
 let __loggedInUser = 'NO_LOGIN_ATTEMPT_YET';
 let __firebaseApp;

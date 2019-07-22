@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 import * as auth from './service';
 
-import { User } from '@firebase/auth-types';
+import { User } from 'firebase';
 
 
 
